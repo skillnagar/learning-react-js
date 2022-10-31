@@ -7,24 +7,20 @@
     <title>React JS Tutorial | Linkedin Learning</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
 
     <div id="root"></div>
 
-    <script>
-
-        let heading = React.createElement(
-            "ul", 
-            { style: { color: 'blue' }}, 
-            React.createElement('li', null, 'Monday'),
-            React.createElement('li', null, 'Tuesday'),
-            React.createElement('li', null, 'Wednesday'),
-            React.createElement('li', null, 'Thrusday'),
-        );
+    <script type="text/babel">
 
         ReactDOM.render(
-            heading,
+            <ul>
+                <li>🤖</li>
+                <li>🤠</li>
+                <li>😀</li>    
+            </ul>,
             document.getElementById("root")
         );
 
