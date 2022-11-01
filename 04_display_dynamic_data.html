@@ -30,19 +30,33 @@
             return (
 
                 <section>
-                    <p>We serve { props.adjective } food</p>
+                    <ul>
+                        { props.dishes.map((dish, i) => (<li key={dish.id}> {dish.title} </li>))}
+                    </ul>
                 </section>
 
             );
 
         }
 
+        const dishes = [
+            "Black Bean Soup",
+            "Macaroni and Cheese",
+            "Salmon and Potatoes",
+            "Pizza"
+        ];
+
+        const dishObjects = dishes.map((dish, i) => ({
+            id: i,
+            title: dish
+        }));
+
         function App() {
 
             return (
                 <div>
                     <Header name="Avinash"/>
-                    <Main adjective="amazing" />
+                    <Main adjective="amazing" dishes={dishObjects}/>
                     <Footer year={ new Date().getFullYear() }/>
                 </div>
             );
