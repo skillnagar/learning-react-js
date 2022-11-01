@@ -1,14 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useReducer } from 'react';
 
 function App() {
 
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useReducer(
+    (checked) => !checked,
+    false
+  );
 
   return (
     <div className="App">
-      <input type="checkbox" value={checked} onChange={ () => setChecked((checked) => !checked)}/>
+      <input type="checkbox" value={checked} onChange={setChecked} />
       <label>{ checked ? "checked" : "not checked" }</label>
     </div>
   );
