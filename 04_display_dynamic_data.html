@@ -30,6 +30,10 @@
             return (
 
                 <section>
+                    <img 
+                        height={200} 
+                        alt="A server presents tow plates"
+                        src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
                     <ul>
                         { props.dishes.map((dish, i) => (<li key={dish.id}> {dish.title} </li>))}
                     </ul>
@@ -54,11 +58,11 @@
         function App() {
 
             return (
-                <div>
+                <React.Fragment>
                     <Header name="Avinash"/>
                     <Main adjective="amazing" dishes={dishObjects}/>
                     <Footer year={ new Date().getFullYear() }/>
-                </div>
+                </React.Fragment>
             );
 
         }
