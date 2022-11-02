@@ -1,42 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function useInput(initialValue) {
+function GitHubUser({ name, location, avatar }) {
 
-  const [value, setValue] = useState(initialValue);
-  return [
-    { value, onChange: e => setValue(e.target.value) },
-    () => setValue(initialValue)
-  ]
+  return (
+    <div>
+      <h1>{ name }</h1>
+      <p>{ location }</p>
+      <img src={avatar} height={150} alt={name} />
+    </div>
+  );
 
 }
 
 function App() {
 
-  const [titleProp, resetTitle] = useInput("");
-  const [colorProp, resetColor] = useInput("#000000");
+  const [data, setData] = useState(null);
 
-  const submit = e => {
-    e.preventDefault();
-    alert(`${titleProp.value}, ${colorProp.value}`);
-    resetTitle();
-    resetColor();
-  };
+  useEffect(() => {
+    fetch(
+      `https://api.github.com/users/avinashseth`
+    )
+    .then((response) => response.json())
+    .then(data => setData(data))
+  }, []);
+
+  if (data) 
+    return (
+      <GitHubUser name={data.name} location={data.location} avatar={data.avatar_url} />
+    );
 
   return (
 
-    <form onSubmit={submit}>
-      <input 
-        type="text" 
-        placeholder="color title..." 
-        { ...titleProp }
-      />
-      <input type="color" 
-        { ...colorProp }
-      />
-      <button>Add</button>
-    </form>
+    <h1>Data</h1>
 
   );
 }
