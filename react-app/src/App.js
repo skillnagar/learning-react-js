@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import './App.css';
 
 function Navigation() {
@@ -43,6 +43,7 @@ export function About() {
   return (
     <div>
       <h1>About Us</h1>
+      <Outlet />
       <Navigation />
     </div>
   );
